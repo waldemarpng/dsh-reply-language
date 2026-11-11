@@ -1,0 +1,63 @@
+{
+  "name": "dsh-reply-language",
+  "version": "0.1.0",
+  "description": "Reply-language selector for DeepSeek Harness: a pill next to the model picker that pins the language the model answers in",
+  "author": "waldemarpng",
+  "homepage": "https://github.com/waldemarpng/dsh-reply-language#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/waldemarpng/dsh-reply-language.git"
+  },
+  "bugs": {
+    "url": "https://github.com/waldemarpng/dsh-reply-language/issues"
+  },
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "test",
+    "scripts",
+    "cordis.patch.yml",
+    "CHANGELOG.md",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "check": "for f in lib/*.js; do node --check \"$f\" || exit 1; done",
+    "test": "node --test test/*.test.js",
+    "guard": "node scripts/guard.mjs",
+    "smoke": "node scripts/smoke.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "language",
+    "locale",
+    "reply"
+  ],
+  "license": "MIT",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-modules",
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-slots",
+        "@deepseek-ai/dsh-client-ui-conversation"
+      ],
+      "platform": "web"
+    },
+    "manifestVersion": 1
+  }
+}
